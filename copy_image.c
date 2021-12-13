@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+
+int is_frame(int index, int width, int height);
+
 int main(void){
     unsigned char header[0x36];
     unsigned char color_parett[0x435-0x36];
@@ -49,17 +52,17 @@ int main(void){
     }
     /* convert to 2D data*/
 
+    /*get edge*/
+
+
     /*data output*/
-    for (int i = 0; i < 0x36; i++)
-    {
+    for (int i = 0; i < 0x36; i++){
         printf("%x, ", header[i]);
     }
-    for (int i = 0x36; i < start_addr; i++)
-    {
+    for (int i = 0x36; i < start_addr; i++){
         // printf("%x", color_parett[i]);
     }
-    for (i = 0; i < end_addr - start_addr; i++)
-    {
+    for (i = 0; i < end_addr - start_addr; i++){
         // printf("%x", temp_data[i]);
     }
 
@@ -82,4 +85,13 @@ int main(void){
     free(temp_data);
     free(data);
 
+}
+
+int is_frame(int index, int width, int height) {
+    if ((index / width) == 0 || (index / width) == height-1){
+        return 1;
+    }
+    if ((index%width)==0 || (index%width)==width-1){
+        return 1;
+    }
 }
