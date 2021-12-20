@@ -9,7 +9,7 @@ int main(void){
     unsigned char color_parett[0x435-0x36];
     unsigned char **data;
     unsigned char *temp_data, *conv_data;
-    char in_f_name[20] = "./LENNA.bmp", out_f_name[20] = "./output_edge.bmp";
+    char in_f_name[20] = "./LENNA512.bmp", out_f_name[20] = "./output_edge.bmp";
     FILE *in_f, *out_f;
     long start_addr, end_addr;
     int width, height, color_bit;
@@ -116,7 +116,7 @@ int is_frame(int index, int width, int height) {
 }
 
 int check_cross(int index, int width, int height, unsigned char *temp_data) {
-    int flag=0, range=50;
+    int flag=0, range=10;
     int a, b;
     // 上下
     a = index - width;
